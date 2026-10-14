@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Метрика Джилба — анализ кода на Groovy</title>
+<link rel="stylesheet" href="css/style.css">
+<script defer src="js/sample.js"></script>
+<script defer src="js/tokenizer.js"></script>
+<script defer src="js/gilb.js"></script>
+<script defer src="js/view.js"></script>
+<script defer src="js/main.js"></script>
+</head>
+<body>
+<header class="top">
+    <h1>Метрика Джилба</h1>
+    <p>Парсер исходного кода на языке Groovy</p>
+</header>
+
+<main class="layout">
+    <section class="panel">
+        <h2>Исходный код</h2>
+        <textarea id="source" spellcheck="false" placeholder="Вставьте код на Groovy"></textarea>
+        <div class="controls">
+            <button id="run" type="button" class="primary">Рассчитать</button>
+            <button id="sample" type="button">Пример</button>
+            <button id="clear" type="button">Очистить</button>
+            <label class="file-label" for="file">Открыть файл</label>
+            <input id="file" type="file" accept=".groovy,.gvy,.txt">
+        </div>
+        <p id="status" class="status"></p>
+    </section>
+
+    <section class="panel">
+        <h2>Результаты</h2>
+        <div id="metrics" class="extended"></div>
+
+        <h2>Найденные ветвления</h2>
+        <div class="table-wrap">
+            <table class="grid">
+                <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Строка</th>
+                    <th>Конструкция</th>
+                    <th>Уровень</th>
+                    <th>Код</th>
+                </tr>
+                </thead>
+                <tbody id="branches"></tbody>
+            </table>
+        </div>
+        <p class="note">switch заменяется вложенными if: каждая ветка case — одно условие,
+            селектор и default не считаются. Самый внешний оператор имеет уровень 0.</p>
+    </section>
+</main>
+</body>
+</html>
